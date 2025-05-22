@@ -1,7 +1,23 @@
 const passport = require('passport');
+const jwt = require('jsonwebtoken')
 
-exports.isAuth = (req, res, done) => {
-    return passport.authenticate('jwt');
+exports.isAuth = async(req, res, next) => {
+    const token = req.cookies.jwt
+    if(!token){
+        return res.status(401).json({
+            message:"User not authenticated",
+            success:false
+        })
+    }
+    const decodeToken = await jwt.verify(token,process.env.JWT_SECRET_KEY)
+    if(!decodeToken){
+        return res.status(401).json({
+            message:"Invalid Token",
+            success:false
+        })
+    }
+    req.user = decodeToken
+    next();
 };
 
 exports.sanitizeUser = (user) => {
