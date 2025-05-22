@@ -9,7 +9,7 @@ import {
     updateProductAsync,
 } from '../../product/productSlice';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Modal from '../../common/Modal';
 import { useAlert } from 'react-alert';
@@ -58,6 +58,7 @@ function ProductForm() {
         product.deleted = true;
         dispatch(updateProductAsync(product));
     };
+    const navigate = useNavigate()
 
     return (
         <>
@@ -86,11 +87,12 @@ function ProductForm() {
             product.rating = selectedProduct.rating || 0;
             dispatch(updateProductAsync(product));
             alert.success('Product Updated');
-
+            navigate("/admin")
             reset();
             } else {
             dispatch(createProductAsync(product));
             alert.success('Product Created');
+            navigate("/admin")
             // TODO: these alerts should check if API failed
             reset();
             }

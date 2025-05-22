@@ -68,9 +68,9 @@ function AdminOrders() {
 
     return (
         <div className="overflow-x-auto">
-        <div className="bg-gray-100 flex items-center justify-center font-sans overflow-hidden">
-            <div className="w-full">
-            <div className="bg-white shadow-md rounded my-6">
+        <div className="bg-gray-100 flex items-center justify-center font-sans overflow-auto">
+            <div className="w-auto bg-red-300">
+            <div className="bg-white shadow-md rounded my-6 w-full">
                 <table className="min-w-max w-full table-auto">
                 <thead>
                     <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -157,9 +157,9 @@ function AdminOrders() {
                             <div>{order.selectedAddress.phone}, </div>
                         </div>
                         </td>
-                        <td className="py-3 px-6 text-center">
+                        <td className="py-3  text-center">
                         {order.id === editableOrderId ? (
-                            <select onChange={(e) => handleUpdate(e, order)}>
+                            <select  onChange={(e) => handleUpdate(e, order)}>
                             <option value="pending">Pending</option>
                             <option value="dispatched">Dispatched</option>
                             <option value="delivered">Delivered</option>
@@ -177,12 +177,7 @@ function AdminOrders() {
                         </td>
                         <td className="py-3 px-6 text-center">
                         <div className="flex item-center justify-center">
-                            <div className="w-6 mr-4 transform hover:text-purple-500 hover:scale-120">
-                            <EyeIcon
-                                className="w-8 h-8"
-                                onClick={(e) => handleShow(order)}
-                            ></EyeIcon>
-                            </div>
+                            
                             <div className="w-6 mr-2 transform hover:text-purple-500 hover:scale-120">
                             <PencilIcon
                                 className="w-8 h-8"

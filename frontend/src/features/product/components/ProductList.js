@@ -1,5 +1,19 @@
-import React, { useState, Fragment, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
+import {
+  ChevronDownIcon,
+  FunnelIcon,
+  MinusIcon,
+  PlusIcon,
+  Squares2X2Icon,
+  StarIcon
+} from '@heroicons/react/20/solid';
+import { XMarkIcon } from '@heroicons/react/24/outline';
+import { Fragment, useEffect, useState } from 'react';
+import { Grid } from 'react-loader-spinner';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { ITEMS_PER_PAGE, discountedPrice } from '../../../app/constants';
+import Pagination from '../../common/Pagination';
 import {
   fetchBrandsAsync,
   fetchCategoriesAsync,
@@ -10,24 +24,6 @@ import {
   selectProductListStatus,
   selectTotalItems,
 } from '../productSlice';
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
-import { XMarkIcon } from '@heroicons/react/24/outline';
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  StarIcon,
-} from '@heroicons/react/20/solid';
-import { Link } from 'react-router-dom';
-import {
-  ChevronDownIcon,
-  FunnelIcon,
-  MinusIcon,
-  PlusIcon,
-  Squares2X2Icon,
-} from '@heroicons/react/20/solid';
-import { ITEMS_PER_PAGE, discountedPrice } from '../../../app/constants';
-import Pagination from '../../common/Pagination';
-import { Grid } from 'react-loader-spinner';
 
 const sortOptions = [
   { name: 'Best Rating', sort: 'rating', order: 'desc', current: false },
@@ -414,27 +410,27 @@ function ProductGrid({ products, status }) {
               visible={true}
             />
           ) : null}
-          {products.map((product) => (
-            <Link to={`/product-detail/${product.id}`} key={product.id}>
+          {products?.length>0 && products?.map((product) => (
+            <Link to={`/product-detail/${product?.id}`} key={product?.id}>
               <div className="group relative border-solid border-2 p-2 border-gray-200">
                 <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                   <img
-                    src={product.thumbnail}
-                    alt={product.title}
+                    src={product?.thumbnail}
+                    alt={product?.title}
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />
                 </div>
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                      <div href={product.thumbnail}>
+                      <div href={product?.thumbnail}>
                         <span aria-hidden="true" className="absolute inset-0" />
-                        {product.title}
+                        {product?.title}
                       </div>
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">
                       <StarIcon className="w-6 h-6 inline"></StarIcon>
-                      <span className=" align-bottom">{product.rating}</span>
+                      <span className=" align-bottom">{product?.rating}</span>
                     </p>
                   </div>
                   <div>
@@ -442,16 +438,16 @@ function ProductGrid({ products, status }) {
                       ${discountedPrice(product)}
                     </p>
                     <p className="text-sm block line-through font-medium text-gray-400">
-                      ${product.price}
+                      ${product?.price}
                     </p>
                   </div>
                 </div>
-                {product.deleted && (
+                {product?.deleted && (
                   <div>
                     <p className="text-sm text-red-400">product deleted</p>
                   </div>
                 )}
-                {product.stock <= 0 && (
+                {product?.stock <= 0 && (
                   <div>
                     <p className="text-sm text-red-400">out of stock</p>
                   </div>

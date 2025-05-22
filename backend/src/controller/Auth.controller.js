@@ -14,8 +14,8 @@ exports.createUser = async (req, res) => {
             })
         }
 
-        const user = await User.findOne({email})
-        if(user){
+        const userExists = await User.findOne({email})
+        if(userExists){
             res.status(400).json({
                 message:"User with email already exists",
                 success:false
@@ -23,15 +23,17 @@ exports.createUser = async (req, res) => {
         }
         
         const hashPassword = await bcrypt.hash(password,10)
-        await User.create({
+
+        const user = new User({
             email,
             password:hashPassword
         })
+        const doc = await user.save()
+        const token = await jwt.sign({ id: doc.id },process.env.JWT_SECRET_KEY)
         
-        return res.status(201).json({
-            message: "User Registered Successfully",
-            success:true
-        })
+       return res.cookie('jwt', token, {maxAge:1*24*60*60*1000,httpsOnly:true,sameSite:"strict"})
+                .status(201)
+                .json({id:doc.id, role:doc.role,message:"User Registered Successfully"});
     } catch (err) {
         console.log(err)
     }
@@ -63,16 +65,12 @@ exports.loginUser = async (req, res) => {
         }
         const token = await jwt.sign({ id: user.id },process.env.JWT_SECRET_KEY)
         return res
-            .cookie('jwt', token, {
-            expires: new Date(Date.now() + 3600000),
-            httpOnly: true,
-            })
+            .cookie('jwt', token, {maxAge:1*24*60*60*1000,httpsOnly:true,sameSite:"strict"})
             .status(200)
             .json({id:user.id,role:user.role,message:`Welcome Back ${user.email}`,success:true});
     };
 
 exports.checkAuth = async (req, res) => {
-    console.log(req.user)
     if(req.user){
         res.json(req.user);
     } else{

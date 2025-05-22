@@ -4,6 +4,7 @@ export function createUser(userData) {
     const response = await fetch('http://localhost:8080/auth/signup', {
         method: 'POST',
         body: JSON.stringify(userData),
+        credentials:"include",
         headers: { 'content-type': 'application/json' },
     });
     const data = await response.json();
@@ -18,6 +19,7 @@ export function loginUser(loginInfo) {
         const response = await fetch('http://localhost:8080/auth/login', {
         method: 'POST',
         body: JSON.stringify(loginInfo),
+        credentials:'include',
         headers: { 'content-type': 'application/json' },
         });
         if (response.ok) {
@@ -38,7 +40,9 @@ export function loginUser(loginInfo) {
 export function checkAuth() {
     return new Promise(async (resolve, reject) => {
     try {
-        const response = await fetch('http://localhost:8080/auth/check');
+        const response = await fetch('http://localhost:8080/auth/check',{
+            credentials:"include",
+        });
         if (response.ok) {
         const data = await response.json();
         resolve({ data });

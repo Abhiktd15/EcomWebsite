@@ -308,7 +308,7 @@ function Checkout() {
                     Choose from Existing addresses
                 </p>
                 <ul>
-                    {user.addresses.map((address, index) => (
+                    {user?.addresses?.map((address, index) => (
                     <li
                         key={index}
                         className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 border-gray-200"
@@ -323,22 +323,22 @@ function Checkout() {
                         />
                         <div className="min-w-0 flex-auto">
                             <p className="text-sm font-semibold leading-6 text-gray-900">
-                            {address.name}
+                            {address?.name}
                             </p>
                             <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                            {address.street}
+                            {address?.street}
                             </p>
                             <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                            {address.pinCode}
+                            {address?.pinCode}
                             </p>
                         </div>
                         </div>
                         <div className="hidden sm:flex sm:flex-col sm:items-end">
                         <p className="text-sm leading-6 text-gray-900">
-                            Phone: {address.phone}
+                            Phone: {address?.phone}
                         </p>
                         <p className="text-sm leading-6 text-gray-500">
-                            {address.city}
+                            {address?.city}
                         </p>
                         </div>
                     </li>

@@ -15,9 +15,14 @@ exports.fetchUserById = async (req, res) => {
 exports.updateUser = async (req, res) => {
     const { id } = req.params;
     try {
-        const {password} = req.body
-        const hashPassword  = await bcrypt.hash(password,10)
-        const user = await User.findByIdAndUpdate(id, {...req.body,password:hashPassword}, { new: true });
+        let user;
+        if(req.body.password){
+            const hashPassword  = await bcrypt.hash(req.body.password,10)
+            user = await User.findByIdAndUpdate(id, {...req.body,password:hashPassword}, { new: true });
+        }else{
+            user = await User.findByIdAndUpdate(id,req.body, { new: true });
+        }
+        
         
         res.status(200).json(user);
     } catch (err) {

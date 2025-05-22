@@ -60,11 +60,15 @@ server.post('/webhook', express.raw({type: 'application/json'}), (request, respo
 
 server.use(express.static(path.resolve(__dirname,'build')))
 server.use(cookieParser());
- 
+
+const corsOptions = {
+    origin:'http://localhost:3000',
+    credentials:true,
+     exposedHeaders: ['x-total-count'],
+}
+
 server.use(
-    cors({
-        exposedHeaders: ['X-Total-Count'],
-    })
+    cors(corsOptions,)
 );
 
 server.use(express.json()); // to parse req.body

@@ -1,7 +1,11 @@
 export function fetchProductById(id) {
   return new Promise(async (resolve) => {
     //TODO: we will not hard-code server URL here
-    const response = await fetch('http://localhost:8080/products/' + id);
+    const response = await fetch('http://localhost:8080/products/' + id,
+      {
+        credentials:'include'
+      }
+    );
     const data = await response.json();
     resolve({ data });
   });
@@ -12,6 +16,7 @@ export function createProduct(product) {
     const response = await fetch('http://localhost:8080/products/', {
       method: 'POST',
       body: JSON.stringify(product),
+      credentials:'include',
       headers: { 'content-type': 'application/json' },
     });
     const data = await response.json();
@@ -26,6 +31,7 @@ export function updateProduct(update) {
       {
         method: 'PATCH',
         body: JSON.stringify(update),
+        credentials:'include',
         headers: { 'content-type': 'application/json' },
       }
     );
@@ -63,17 +69,19 @@ export function fetchProductsByFilters(filter, sort, pagination, admin) {
   return new Promise(async (resolve) => {
     //TODO: we will not hard-code server URL here
     const response = await fetch(
-      'http://localhost:8080/products?' + queryString
+      'http://localhost:8080/products?' + queryString,{
+        credentials:'include'
+      }
     );
     const data = await response.json();
-    const totalItems = await response.headers.get('X-Total-Count');
+    const totalItems = await response.headers.get('x-total-count');
     resolve({ data: { products: data, totalItems: +totalItems } });
   });
 }
 
 export function fetchCategories() {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/categories');
+    const response = await fetch('http://localhost:8080/categories',{credentials:'include'});
     const data = await response.json();
     resolve({ data });
   });
@@ -81,7 +89,7 @@ export function fetchCategories() {
 
 export function fetchBrands() {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/brands');
+    const response = await fetch('http://localhost:8080/brands',{credentials:'include'});
     const data = await response.json();
     resolve({ data });
   });
