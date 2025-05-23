@@ -45,7 +45,6 @@ export default function Signup() {
                     //TODO: this role can be directly given on backend
                     })
                 );
-                console.log(data);
                 })}
             >
                 <div>

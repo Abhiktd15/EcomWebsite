@@ -1,33 +1,32 @@
-import { Counter } from './features/counter/Counter';
 import './App.css';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 
-import { createBrowserRouter, Link, RouterProvider } from 'react-router-dom';
-import CartPage from './pages/CartPage';
-import Checkout from './pages/Checkout';
-import ProductDetailPage from './pages/ProductDetailPage';
-import Protected from './features/auth/components/Protected';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { checkAuthAsync, selectLoggedInUser, selectUserChecked } from './features/auth/authSlice';
-import { fetchItemsByUserIdAsync } from './features/cart/cartSlice';
-import PageNotFound from './pages/404';
-import OrderSuccessPage from './pages/OrderSuccessPage';
-import UserOrdersPage from './pages/UserOrdersPage';
-import UserProfilePage from './pages/UserProfilePage';
-import { fetchLoggedInUserAsync } from './features/user/userSlice';
-import Logout from './features/auth/components/Logout';
-import ForgotPasswordPage from './pages/ForgotPasswordPage';
-import ProtectedAdmin from './features/auth/components/ProtectedAdmin';
-import AdminHome from './pages/AdminHome';
-import AdminProductDetailPage from './pages/AdminProductDetailPage';
-import AdminProductFormPage from './pages/AdminProductFormPage';
-import AdminOrdersPage from './pages/AdminOrdersPage';
 import { positions, Provider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
+import { useDispatch, useSelector } from 'react-redux';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { checkAuthAsync, selectLoggedInUser, selectUserChecked } from './features/auth/authSlice';
+import Logout from './features/auth/components/Logout';
+import Protected from './features/auth/components/Protected';
+import ProtectedAdmin from './features/auth/components/ProtectedAdmin';
+import { fetchItemsByUserIdAsync } from './features/cart/cartSlice';
+import { fetchLoggedInUserAsync } from './features/user/userSlice';
+import PageNotFound from './pages/404';
+import AdminHome from './pages/AdminHome';
+import AdminOrdersPage from './pages/AdminOrdersPage';
+import AdminProductDetailPage from './pages/AdminProductDetailPage';
+import AdminProductFormPage from './pages/AdminProductFormPage';
+import CartPage from './pages/CartPage';
+import Checkout from './pages/Checkout';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import OrderSuccessPage from './pages/OrderSuccessPage';
+import ProductDetailPage from './pages/ProductDetailPage';
 import StripeCheckout from './pages/StripeCheckout';
+import UserOrdersPage from './pages/UserOrdersPage';
+import UserProfilePage from './pages/UserProfilePage';
 
 const options = {
   timeout: 5000,
@@ -178,7 +177,7 @@ function App() {
 
   return (
     <>
-      <div className="App">
+      <div className="bg-[#F1F1F1]">
         { userChecked && <Provider template={AlertTemplate} {...options}>
             <RouterProvider router={router} />
           </Provider>}

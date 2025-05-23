@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react';
-import { StarIcon } from '@heroicons/react/20/solid';
 import { RadioGroup } from '@headlessui/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductByIdAsync, selectProductById, selectProductListStatus } from '../productSlice';
-import { useParams } from 'react-router-dom';
-import { addToCartAsync, selectItems } from '../../cart/cartSlice';
-import { selectLoggedInUser } from '../../auth/authSlice';
-import { discountedPrice } from '../../../app/constants';
+import { StarIcon } from '@heroicons/react/20/solid';
+import { useEffect, useState } from 'react';
 import { useAlert } from 'react-alert';
 import { Grid } from 'react-loader-spinner';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { discountedPrice } from '../../../app/constants';
+import { addToCartAsync, selectItems } from '../../cart/cartSlice';
+import { fetchProductByIdAsync, selectProductById, selectProductListStatus } from '../productSlice';
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
 
@@ -72,7 +71,7 @@ export default function ProductDetail() {
     }, [dispatch, params.id]);
 
     return (
-        <div className="bg-white rounded-2xl">
+        <div className="bg-white rounded-2xl border-2 border-gray-200">
         {status === 'loading' ? (
             <Grid
             height="80"

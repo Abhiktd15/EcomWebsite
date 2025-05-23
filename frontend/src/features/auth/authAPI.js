@@ -61,7 +61,10 @@ export function checkAuth() {
 
 export function signOut(userId) {
     return new Promise(async (resolve) => {
-    // TODO: on server we will remove user session info
-    resolve({ data: 'success' });
+        const response = await fetch("http://localhost:8080/auth/logout",{
+            credentials:'include'
+        })
+        const data = await response.json()
+        resolve({ data });
     });
 }

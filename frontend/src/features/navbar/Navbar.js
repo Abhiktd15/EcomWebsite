@@ -47,11 +47,11 @@ function NavBar({ children }) {
                         <div className="flex-shrink-0">
                         <Link className='flex items-center gap-2' to="/">
                             <img
-                            className="h-8 w-8"
-                            src="/ecommerce.png"
+                            className="w-16"
+                            src="https://cdn.dribbble.com/userupload/17039932/file/original-983633d1f6de58f5d871f174ff34f057.jpg?resize=400x0"
                             alt="Your Company"
                             />
-                            <h1 className='text-lg text-gray-700 font-bold'>E-Commerce</h1>
+                            <h1 className='text-lg  font-bold bg-gradient-to-tr from-orange-800 via-orange-500 to-orange-200 text-transparent bg-clip-text '>E-Commerce</h1>
                         </Link>
                         </div>
                         <div className="hidden md:block">
@@ -102,8 +102,8 @@ function NavBar({ children }) {
                             <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                 <span className="sr-only">Open user menu</span>
                                 <img
-                                className="h-8 w-8 rounded-full"
-                                src={userInfo.imageUrl}
+                                className="h-10 w-10 hover:scale-110 rounded-full"
+                                src='https://png.pngtree.com/png-clipart/20231019/original/pngtree-user-profile-avatar-png-image_13369990.png'
                                 alt=""
                                 />
                             </Menu.Button>

@@ -77,4 +77,10 @@ exports.checkAuth = async (req, res) => {
         res.sendStatus(401);
     }
 };
+exports.logout = async (req, res) => {
+    return res.status(200).cookie('jwt',"",{maxAge:0}).json({
+        message:"User Logged Out Successfully",
+        success:true
+    })
+};
 
