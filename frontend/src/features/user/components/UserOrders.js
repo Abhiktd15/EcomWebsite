@@ -21,13 +21,15 @@ export default function UserOrders() {
 
     return (
         <div>
+        <h1 className='mx-auto text-4xl font-bold'>My Orders</h1>
+
         {orders && orders?.map((order) => (
             <div key={order.id}>
             <div>
-                <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8 rounded-2xl">
-                <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                    <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
-                    Order # {order.id}
+                <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8 rounded-2xl border-2 border-gray-200 shadow-lg">
+                <div className=" px-4 py-6 sm:px-6">
+                    <h1 className="text-xl my-5 font-bold tracking-tight text-gray-900">
+                    OrderID # {order.id}
                     </h1>
                     <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
                     Order Status : {order.status}
@@ -75,41 +77,46 @@ export default function UserOrders() {
                     </div>
                 </div>
 
-                <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                    <div className="flex justify-between my-2 text-base font-medium text-gray-900">
-                    <p>Subtotal</p>
-                    <p>$ {order?.totalAmount}</p>
-                    </div>
-                    <div className="flex justify-between my-2 text-base font-medium text-gray-900">
-                    <p>Total Items in Cart</p>
-                    <p>{order?.totalItems} items</p>
-                    </div>
-                    <p className="mt-0.5 text-sm text-gray-500">
-                    Shipping Address :
-                    </p>
-                    <div className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 rounded-lg mt-2 border-gray-200">
-                    <div className="flex gap-x-4">
-                        <div className="min-w-0 flex-auto">
-                        <p className="text-sm font-semibold leading-6 text-gray-900">
-                            {order?.selectedAddress.name}
-                        </p>
-                        <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                            {order?.selectedAddress.street}
-                        </p>
-                        <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                            {order?.selectedAddress.pinCode}
-                        </p>
+                <div className="border-t border-gray-200 px-4 py-6 sm:px-6 flex justify-between items-center">
+                    <div>
+                        <div className="flex gap-4 my-2 text-base font-medium text-gray-900">
+                        <p>Subtotal -- </p>
+                        <p>$ {order?.totalAmount}</p>
+                        </div>
+                        <div className="flex gap-4 my-2 text-base font-medium text-gray-900">
+                        <p>Total Items in Cart -- </p>
+                        <p>{order?.totalItems} items</p>
                         </div>
                     </div>
-                    <div className="hidden sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">
-                        Phone: {order?.selectedAddress.phone}
+                    <div>
+                        <p className="mt-0.5 text-base text-black font-bold">
+                        Shipping Address :
                         </p>
-                        <p className="text-sm leading-6 text-gray-500">
-                        {order?.selectedAddress.city}
-                        </p>
+                        <div className="flex  gap-x-6 px-5 w-fit py-5 border-solid border-2 rounded-lg mt-2 border-gray-200">
+                        <div className="flex gap-x-4">
+                            <div className="min-w-0 flex-auto">
+                            <p className="text-sm font-semibold leading-6 text-gray-900">
+                                {order?.selectedAddress.name}
+                            </p>
+                            <p className="mt-1 truncate text-xs leading-5 text-gray-500">
+                                {order?.selectedAddress.street}
+                            </p>
+                            <p className="mt-1 truncate text-xs leading-5 text-gray-500">
+                                {order?.selectedAddress.pinCode}
+                            </p>
+                            </div>
+                        </div>
+                        <div className="hidden sm:flex sm:flex-col sm:items-end">
+                            <p className="text-sm leading-6 text-gray-900">
+                            Phone: {order?.selectedAddress.phone}
+                            </p>
+                            <p className="text-sm leading-6 text-gray-500">
+                            {order?.selectedAddress.city}
+                            </p>
+                        </div>
+                        </div>
                     </div>
-                    </div>
+                    
                 </div>
                 </div>
             </div>

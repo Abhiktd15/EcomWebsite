@@ -72,7 +72,7 @@ export default function ProductDetail() {
     }, [dispatch, params.id]);
 
     return (
-        <div className="bg-white">
+        <div className="bg-white rounded-2xl">
         {status === 'loading' ? (
             <Grid
             height="80"
@@ -181,13 +181,13 @@ export default function ProductDetail() {
                     <h3 className="sr-only">Reviews</h3>
                     <div className="flex items-center">
                     <div className="flex items-center">
-                        {[0, 1, 2, 3, 4].map((rating) => (
+                        {[ 1, 2, 3, 4, 5].map((rating) => (
                         <StarIcon
                             key={rating}
                             className={classNames(
                             product.rating > rating
-                                ? 'text-gray-900'
-                                : 'text-gray-200',
+                                ? 'text-gray-950'
+                                : 'text-gray-300',
                             'h-5 w-5 flex-shrink-0'
                             )}
                             aria-hidden="true"
@@ -325,7 +325,7 @@ export default function ProductDetail() {
                     <button
                     onClick={handleCart}
                     type="submit"
-                    className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="mt-10 flex w-full items-center justify-center rounded-2xl border border-transparent bg-black px-8 py-3 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
                     Add to Cart
                     </button>
@@ -338,7 +338,7 @@ export default function ProductDetail() {
                     <h3 className="sr-only">Description</h3>
 
                     <div className="space-y-6">
-                    <p className="text-base text-gray-900">
+                    <p className="text-base text-gray-800 font-medium">
                         {product.description}
                     </p>
                     </div>

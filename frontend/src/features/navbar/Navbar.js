@@ -1,8 +1,11 @@
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import {
+    ArchiveBoxIcon,
+    ArrowRightEndOnRectangleIcon,
     Bars3Icon,
     ShoppingCartIcon,
+    UserIcon,
     XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
@@ -19,9 +22,9 @@ const navigation = [
 
 ];
 const userNavigation = [
-    { name: 'My Profile', link: '/profile' },
-    { name: 'My Orders', link: '/orders' },
-    { name: 'Sign out', link: '/logout' },
+    { name: 'My Profile', link: '/profile',icon:<UserIcon className='w-6 h-8'/> },
+    { name: 'My Orders', link: '/orders',icon:<ArchiveBoxIcon className='w-6 h-8'/> },
+    { name: 'Sign out', link: '/logout',icon:<ArrowRightEndOnRectangleIcon className='w-6 h-8'/> },
 ];
 
 function classNames(...classes) {
@@ -34,20 +37,21 @@ function NavBar({ children }) {
 
     return (
         <>
-        {userInfo &&<div className="min-h-full">
-            <Disclosure as="nav" className="bg-gray-800">
+        {userInfo &&<div className="min-h-full ">
+            <Disclosure as="nav" className="bg-white border-2 border-gray-200 ">
             {({ open }) => (
                 <>
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
-                        <Link to="/">
+                        <Link className='flex items-center gap-2' to="/">
                             <img
                             className="h-8 w-8"
                             src="/ecommerce.png"
                             alt="Your Company"
                             />
+                            <h1 className='text-lg text-gray-700 font-bold'>E-Commerce</h1>
                         </Link>
                         </div>
                         <div className="hidden md:block">
@@ -59,9 +63,9 @@ function NavBar({ children }) {
                                 to={item.link}
                                 className={classNames(
                                     item.current
-                                    ? 'bg-gray-900 text-white'
-                                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                    'rounded-md px-3 py-2 text-sm font-medium'
+                                    ? 'bg-gray-900 '
+                                    : ' hover:bg-gray-200 ',
+                                    'rounded-lg px-3 text-black py-1 text-base  font-medium'
                                 )}
                                 aria-current={item.current ? 'page' : undefined}
                                 >
@@ -77,7 +81,7 @@ function NavBar({ children }) {
                         <Link to="/cart">
                             <button
                             type="button"
-                            className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                            className="rounded-full  p-2 text-black hover:scale-110 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                             >
                             <span className="sr-only">View notifications</span>
                             <ShoppingCartIcon
@@ -121,10 +125,10 @@ function NavBar({ children }) {
                                         to={item.link}
                                         className={classNames(
                                         active ? 'bg-gray-100' : '',
-                                        'block px-4 py-2 text-sm text-gray-700'
+                                        ' px-4 py-2 text-base font-medium  text-gray-700 flex items-center gap-2'
                                         )}
                                     >
-                                        {item.name}
+                                       {item.icon} {item.name}
                                     </Link>
                                     )}
                                 </Menu.Item>
@@ -156,7 +160,8 @@ function NavBar({ children }) {
 
                 <Disclosure.Panel className="md:hidden">
                     <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                    {navigation.map((item) => (
+                    {navigation.map((item) => 
+                    item[userInfo.role]?(
                         <Disclosure.Button
                         key={item.name}
                         as="a"
@@ -164,30 +169,30 @@ function NavBar({ children }) {
                         className={classNames(
                             item.current
                             ? 'bg-gray-900 text-white'
-                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            : 'text-gray-500 hover:bg-gray-700 hover:text-white',
                             'block rounded-md px-3 py-2 text-base font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
                         >
-                        {item.name}
+                            {item.name}
                         </Disclosure.Button>
-                    ))}
+                    ):null)}
                     </div>
                     <div className="border-t border-gray-700 pb-3 pt-4">
-                    <div className="flex items-center px-5">
-                        <div className="flex-shrink-0">
+                    <div className="flex items-center px-5 justify-between">
+                        {/* <div className="flex-shrink-0">
                         <img
                             className="h-10 w-10 rounded-full"
                             src={userInfo.imageUrl}
                             alt=""
                         />
-                        </div>
-                        <div className="ml-3">
-                        <div className="text-base font-medium leading-none text-white">
+                        </div> */}
+                        <div className="ml-3 ">
+                        <div className="text-base font-medium leading-none text-black">
                             {/* this should come from userInfo */}
-                            {userInfo.name}
+                            {userInfo?.addresses[0].name}
                         </div>
-                        <div className="text-sm font-medium leading-none text-gray-400">
+                        <div className="text-sm font-medium leading-none text-gray-500">
                             {userInfo.email}
                         </div>
                         </div>
@@ -197,7 +202,7 @@ function NavBar({ children }) {
                             className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                         >
                             <ShoppingCartIcon
-                            className="h-6 w-6"
+                            className="h-8 w-8 p-1"
                             aria-hidden="true"
                             />
                         </button>
@@ -209,14 +214,15 @@ function NavBar({ children }) {
                         )}
                     </div>
                     <div className="mt-3 space-y-1 px-2">
-                        {userNavigation.map((item) => (
+                        {userNavigation.map((item) => 
+                        (
                         <Disclosure.Button
                             key={item.name}
                             as="a"
-                            href={item.href}
-                            className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                            href={item.link}
+                            className="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                         >
-                            {item.name}
+                            {item.icon}{item.name}
                         </Disclosure.Button>
                         ))}
                     </div>
@@ -226,15 +232,15 @@ function NavBar({ children }) {
             )}
             </Disclosure>
 
-            <header className="bg-white shadow">
+            {/* <header className="bg-white shadow">
             <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                 <h1 className="text-3xl font-bold tracking-tight text-gray-900">
                     E-Commerce
                 </h1>
             </div>
-            </header>
+            </header> */}
             <main>
-            <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 ">
                 {children}
             </div>
             </main>

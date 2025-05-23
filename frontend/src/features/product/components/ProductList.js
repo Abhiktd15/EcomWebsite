@@ -108,7 +108,7 @@ export default function ProductList() {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white rounded-2xl border-2 border-gray-200 shadow-lg">
       <div>
         <MobileFilter
           handleFilter={handleFilter}
@@ -412,8 +412,8 @@ function ProductGrid({ products, status }) {
           ) : null}
           {products?.length>0 && products?.map((product) => (
             <Link to={`/product-detail/${product?.id}`} key={product?.id}>
-              <div className="group relative border-solid border-2 p-2 border-gray-200">
-                <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+              <div className="group relative border-solid border-2 p-2 rounded-xl hover:rotate-2 border-gray-200">
+                <div className="min-h-60  aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                   <img
                     src={product?.thumbnail}
                     alt={product?.title}
@@ -423,7 +423,7 @@ function ProductGrid({ products, status }) {
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                      <div href={product?.thumbnail}>
+                      <div className='text-base font-bold' href={product?.thumbnail}>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product?.title}
                       </div>

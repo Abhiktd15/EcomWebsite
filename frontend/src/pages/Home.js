@@ -5,7 +5,7 @@ import Footer from "../features/common/Footer";
 
 function Home() {
     return ( 
-        <div>
+        <div className="bg-[#F1F1F1]">
             <NavBar>
                 <ProductList></ProductList>
             </NavBar>

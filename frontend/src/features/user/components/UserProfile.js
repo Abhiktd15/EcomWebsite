@@ -51,13 +51,14 @@ export default function UserProfile() {
 
   return (
     <div>
-      <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-          <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
+      <div className="mx-auto mt-12 bg-white rounded-2xl border-2 border-gray-200 shadow-lg max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className=" px-4 py-6 sm:px-6">
+          <h1 className='mx-auto text-4xl font-bold  '>My Profile</h1>
+          <h1 className="text-xl my-5 font-bold tracking-tight text-gray-900">
             Name: {userInfo ? userInfo?.addresses[0]?.name : 'New User'}
           </h1>
-          <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
-            Email Address : {userInfo.email}
+          <h3 className="text-xl my-5 font-bold tracking-tight text-gray-900">
+            Email Address : <span className='text-red-900'>{userInfo.email}</span>
           </h3>
           {userInfo.role === 'admin' && (
             <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
@@ -73,7 +74,7 @@ export default function UserProfile() {
               setSelectedEditIndex(-1);
             }}
             type="submit"
-            className="rounded-md my-5 bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-md my-5 bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Add New Address
           </button>
@@ -261,7 +262,7 @@ export default function UserProfile() {
                 <div className="mt-6 flex items-center justify-end gap-x-6">
                   <button
                     type="submit"
-                    className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Add Address
                   </button>
