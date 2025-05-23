@@ -190,7 +190,7 @@ function NavBar({ children }) {
                         <div className="ml-3 ">
                         <div className="text-base font-medium leading-none text-black">
                             {/* this should come from userInfo */}
-                            {userInfo?.addresses[0].name}
+                            {userInfo?.addresses[0]?.name}
                         </div>
                         <div className="text-sm font-medium leading-none text-gray-500">
                             {userInfo.email}

@@ -68,8 +68,8 @@ function AdminOrders() {
 
     return (
         <div className="overflow-x-auto">
-        <div className="bg-gray-100 flex items-center justify-center font-sans overflow-auto">
-            <div className="w-auto bg-red-300">
+        <div className="bg-gray-100 flex items-center  font-sans overflow-auto">
+            <div className="w-auto ">
             <div className="bg-white shadow-md rounded my-6 w-full">
                 <table className="min-w-max w-full table-auto">
                 <thead>

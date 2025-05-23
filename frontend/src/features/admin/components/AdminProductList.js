@@ -106,7 +106,7 @@ export default function AdminProductList() {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white border-2 border-gray-200 rounded-2xl">
       <div>
         <MobileFilter
           handleFilter={handleFilter}
@@ -355,7 +355,7 @@ function DesktopFilter({ handleFilter, filters }) {
         >
           {({ open }) => (
             <>
-              <h3 className="-my-3 flow-root">
+              <h3 className="-my-3 flow-root ">
                 <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
                   <span className="font-medium text-gray-900">
                     {section.name}
@@ -407,13 +407,13 @@ function Pagination({ page, setPage, handlePage, totalItems }) {
       <div className="flex flex-1 justify-between sm:hidden">
         <div
           onClick={(e) => handlePage(page > 1 ? page - 1 : page)}
-          className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="relative inline-flex items-center rounded-md border border-gray-300 bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 cursor-pointer"
         >
           Previous
         </div>
         <div
           onClick={(e) => handlePage(page < totalPages ? page + 1 : page)}
-          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 cursor-pointer"
         >
           Next
         </div>
@@ -441,7 +441,7 @@ function Pagination({ page, setPage, handlePage, totalItems }) {
           >
             <div
               onClick={(e) => handlePage(page > 1 ? page - 1 : page)}
-              className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+              className="relative inline-flex items-center rounded-l-md px-2 py-2 text-white bg-black cursor-pointer ring-1 ring-inset ring-gray-300 hover:bg-gray-800 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
@@ -453,9 +453,9 @@ function Pagination({ page, setPage, handlePage, totalItems }) {
                 key={index}
                 onClick={(e) => handlePage(index + 1)}
                 aria-current="page"
-                className={`relative cursor-pointer z-10 inline-flex items-center ${
+                className={`relative cursor-pointer z-10 inline-flex border items-center ${
                   index + 1 === page
-                    ? 'bg-indigo-600 text-white'
+                    ? 'bg-gray-600 text-white'
                     : 'text-gray-400'
                 } px-4 py-2 text-sm font-semibold  focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
               >
@@ -465,7 +465,7 @@ function Pagination({ page, setPage, handlePage, totalItems }) {
 
             <div
               onClick={(e) => handlePage(page < totalPages ? page + 1 : page)}
-              className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+              className="relative inline-flex items-center rounded-r-md px-2 py-2 text-white bg-black ring-1 ring-inset ring-gray-300 hover:bg-gray-800 cursor-pointer focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Next</span>
               <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
@@ -485,7 +485,7 @@ function ProductGrid({ products }) {
           {products.map((product) => (
             <div key={product.id}>
               <Link to={`/product-detail/${product.id}`} >
-                <div className="group relative border-solid border-2 p-2 border-gray-200">
+                <div className="group relative border-solid border-2 rounded-lg hover:rotate-2 transition-all duration-200 p-2 border-gray-200">
                   <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                     <img
                       src={product.thumbnail}
@@ -534,7 +534,7 @@ function ProductGrid({ products }) {
               <div className="mt-5">
                 <Link
                   to={`/admin/product-form/edit/${product.id}`}
-                  className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 hover:scale-125 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Edit Product
                 </Link>
