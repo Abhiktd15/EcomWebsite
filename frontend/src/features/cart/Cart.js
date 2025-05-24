@@ -40,8 +40,8 @@ export default function Cart() {
       {!items.length && cartLoaded && <Navigate to="/" replace={true}></Navigate>}
 
       <div>
-        <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+        <div className="mx-auto border-2 border-gray-200 rounded-2xl mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className=" border-gray-200 px-4 py-6 sm:px-6">
             <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
               Cart
             </h1>

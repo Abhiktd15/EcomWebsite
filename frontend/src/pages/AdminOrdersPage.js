@@ -4,9 +4,9 @@ import NavBar from "../features/navbar/Navbar";
 
 function AdminOrdersPage() {
     return ( 
-        <div>
+        <div >
             <NavBar>
-                <AdminOrders></AdminOrders>
+                <AdminOrders>e</AdminOrders>
             </NavBar>
             <Footer/>
         </div>

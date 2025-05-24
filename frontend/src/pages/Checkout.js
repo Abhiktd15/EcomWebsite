@@ -93,12 +93,12 @@ function Checkout() {
             replace={true}
             ></Navigate>
         )}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3 flex flex-col gap-4 ">
                 {/* This form is for address */}
                 <form
-                className="bg-white px-5 py-12 mt-12"
+                className="bg-white px-5 py-12 mt-12 border-2 border-gray-200 rounded-2xl"
                 noValidate
                 onSubmit={handleSubmit((data) => {
                     console.log(data);
@@ -300,18 +300,18 @@ function Checkout() {
                     </div>
                 </div>
                 </form>
-                <div className="border-b border-gray-900/10 pb-12">
+                <div className="border-2 border-gray-200 rounded-2xl p-4 bg-white mb-10">
                 <h2 className="text-base font-semibold leading-7 text-gray-900">
                     Addresses
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-gray-600">
                     Choose from Existing addresses
                 </p>
-                <ul>
+                <ul className='flex flex-col gap-2'>
                     {user?.addresses?.map((address, index) => (
                     <li
                         key={index}
-                        className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 border-gray-200"
+                        className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 rounded-2xl border-gray-200"
                     >
                         <div className="flex gap-x-4">
                         <input
@@ -394,8 +394,8 @@ function Checkout() {
                 </div>
             </div>
             <div className="lg:col-span-2">
-                <div className="mx-auto mt-12 bg-white max-w-7xl px-2 sm:px-2 lg:px-4">
-                <div className="border-t border-gray-200 px-0 py-6 sm:px-0">
+                <div className="mx-auto mt-12 bg-white max-w-7xl px-2 sm:px-2 lg:px-4 border-2 border-gray-200 rounded-2xl">
+                <div className="  px-0 py-6 sm:px-0">
                     <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
                     Cart
                     </h1>
