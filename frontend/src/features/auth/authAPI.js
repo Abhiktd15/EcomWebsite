@@ -1,7 +1,7 @@
 
 export function createUser(userData) {
     return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/auth/signup', {
+    const response = await fetch('https://ecomwebsite-lkkx.onrender.com/auth/signup', {
         method: 'POST',
         body: JSON.stringify(userData),
         credentials:"include",
@@ -16,7 +16,7 @@ export function createUser(userData) {
 export function loginUser(loginInfo) {
     return new Promise(async (resolve, reject) => {
     try {
-        const response = await fetch('http://localhost:8080/auth/login', {
+        const response = await fetch('https://ecomwebsite-lkkx.onrender.com/auth/login', {
         method: 'POST',
         body: JSON.stringify(loginInfo),
         credentials:'include',
@@ -40,7 +40,7 @@ export function loginUser(loginInfo) {
 export function checkAuth() {
     return new Promise(async (resolve, reject) => {
     try {
-        const response = await fetch('http://localhost:8080/auth/check',{
+        const response = await fetch('https://ecomwebsite-lkkx.onrender.com/auth/check',{
             credentials:"include",
         });
         if (response.ok) {
@@ -61,7 +61,7 @@ export function checkAuth() {
 
 export function signOut(userId) {
     return new Promise(async (resolve) => {
-        const response = await fetch("http://localhost:8080/auth/logout",{
+        const response = await fetch("https://ecomwebsite-lkkx.onrender.com/auth/logout",{
             credentials:'include'
         })
         const data = await response.json()

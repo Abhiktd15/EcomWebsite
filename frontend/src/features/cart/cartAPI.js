@@ -1,6 +1,6 @@
 export function addToCart(item) {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/cart', {
+    const response = await fetch('https://ecomwebsite-lkkx.onrender.com/cart', {
       method: 'POST',
       body: JSON.stringify(item),
       credentials:"include",
@@ -15,7 +15,7 @@ export function addToCart(item) {
 export function fetchItemsByUserId() {
   return new Promise(async (resolve) => {
     //TODO: we will not hard-code server URL here
-    const response = await fetch('http://localhost:8080/cart',{
+    const response = await fetch('https://ecomwebsite-lkkx.onrender.com/cart',{
       credentials:"include",
     });
     const data = await response.json();
@@ -25,7 +25,7 @@ export function fetchItemsByUserId() {
 
 export function updateCart(update) {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/cart/' + update.id, {
+    const response = await fetch('https://ecomwebsite-lkkx.onrender.com/cart/' + update.id, {
       method: 'PATCH',
       body: JSON.stringify(update),
       credentials:"include",
@@ -39,7 +39,7 @@ export function updateCart(update) {
 
 export function deleteItemFromCart(itemId) {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/cart/' + itemId, {
+    const response = await fetch('https://ecomwebsite-lkkx.onrender.com/cart/' + itemId, {
       method: 'DELETE',
       credentials:"include",
       headers: { 'content-type': 'application/json' },

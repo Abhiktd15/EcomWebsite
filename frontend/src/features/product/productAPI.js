@@ -1,7 +1,7 @@
 export function fetchProductById(id) {
   return new Promise(async (resolve) => {
     //TODO: we will not hard-code server URL here
-    const response = await fetch('http://localhost:8080/products/' + id,
+    const response = await fetch('https://ecomwebsite-lkkx.onrender.com/products/' + id,
       {
         credentials:'include'
       }
@@ -13,7 +13,7 @@ export function fetchProductById(id) {
 
 export function createProduct(product) {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/products/', {
+    const response = await fetch('https://ecomwebsite-lkkx.onrender.com/products/', {
       method: 'POST',
       body: JSON.stringify(product),
       credentials:'include',
@@ -27,7 +27,7 @@ export function createProduct(product) {
 export function updateProduct(update) {
   return new Promise(async (resolve) => {
     const response = await fetch(
-      'http://localhost:8080/products/' + update.id,
+      'https://ecomwebsite-lkkx.onrender.com/products/' + update.id,
       {
         method: 'PATCH',
         body: JSON.stringify(update),
@@ -69,7 +69,7 @@ export function fetchProductsByFilters(filter, sort, pagination, admin) {
   return new Promise(async (resolve) => {
     //TODO: we will not hard-code server URL here
     const response = await fetch(
-      'http://localhost:8080/products?' + queryString,{
+      'https://ecomwebsite-lkkx.onrender.com/products?' + queryString,{
         credentials:'include'
       }
     );
@@ -81,7 +81,7 @@ export function fetchProductsByFilters(filter, sort, pagination, admin) {
 
 export function fetchCategories() {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/categories',{credentials:'include'});
+    const response = await fetch('https://ecomwebsite-lkkx.onrender.com/categories',{credentials:'include'});
     const data = await response.json();
     resolve({ data });
   });
@@ -89,7 +89,7 @@ export function fetchCategories() {
 
 export function fetchBrands() {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/brands',{credentials:'include'});
+    const response = await fetch('https://ecomwebsite-lkkx.onrender.com/brands',{credentials:'include'});
     const data = await response.json();
     resolve({ data });
   });

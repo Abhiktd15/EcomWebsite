@@ -1,6 +1,6 @@
 export function createOrder(order) {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/orders', {
+    const response = await fetch('https://ecomwebsite-lkkx.onrender.com/orders', {
       method: 'POST',
       body: JSON.stringify(order),
       credentials:"include",
@@ -13,7 +13,7 @@ export function createOrder(order) {
 
 export function updateOrder(order) {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/orders/'+order.id, {
+    const response = await fetch('https://ecomwebsite-lkkx.onrender.com/orders/'+order.id, {
       method: 'PATCH',
       body: JSON.stringify(order),
       credentials:"include",
@@ -37,7 +37,7 @@ export function fetchAllOrders(sort, pagination) {
     return new Promise(async (resolve) => {
       //TODO: we will not hard-code server URL here
       const response = await fetch(
-        'http://localhost:8080/orders?' + queryString,{
+        'https://ecomwebsite-lkkx.onrender.com/orders?' + queryString,{
           credentials:'include'
         }
       );
