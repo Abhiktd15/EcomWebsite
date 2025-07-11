@@ -31,7 +31,7 @@ exports.createUser = async (req, res) => {
         const doc = await user.save()
         const token = await jwt.sign({ id: doc.id },process.env.JWT_SECRET_KEY)
         
-       return res.cookie('jwt', token, {maxAge:1*24*60*60*1000,httpsOnly:true,sameSite:"strict"})
+       return res.cookie('jwt', token, {maxAge:1*24*60*60*1000,httpsOnly:true,sameSite:"None",secure:true})
                 .status(201)
                 .json({id:doc.id, role:doc.role,message:"User Registered Successfully"});
     } catch (err) {
@@ -65,7 +65,7 @@ exports.loginUser = async (req, res) => {
         }
         const token = await jwt.sign({ id: user.id },process.env.JWT_SECRET_KEY)
         return res
-            .cookie('jwt', token, {maxAge:1*24*60*60*1000,httpsOnly:true,sameSite:"strict"})
+            .cookie('jwt', token, {maxAge:1*24*60*60*1000,httpsOnly:true,sameSite:"None",secure:true})
             .status(200)
             .json({id:user.id,role:user.role,message:`Welcome Back ${user.email}`,success:true});
     };
