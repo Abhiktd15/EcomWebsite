@@ -62,7 +62,7 @@ server.use(express.static(path.resolve(__dirname,'build')))
 server.use(cookieParser());
 
 const corsOptions = {
-    origin:'http://localhost:3000',
+    origin:'https://ecom-website-gold.vercel.app/',
     credentials:true,
      exposedHeaders: ['x-total-count'],
 }
